@@ -14,7 +14,7 @@ export const profile = {
   email: 'mishra.vishu99@gmail.com',
   links: [
     { label: 'GitHub', href: 'https://github.com/vishuishra' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/vishumishra99/' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/vishu-mishra' },
     { label: 'Email', href: 'mailto:mishra.vishu99@gmail.com' },
   ],
 };
