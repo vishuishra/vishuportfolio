@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
-import './App.css';
-import MoleculeBackground from './components/MoleculeBackground';
+import { useEffect, useMemo, useState } from "react";
+import "./App.css";
+import MoleculeBackground from "./components/MoleculeBackground";
 import {
   CAREER_START_DATE,
   certifications,
@@ -8,38 +8,38 @@ import {
   profile,
   projects,
   skills,
-} from './data/portfolioData';
-import { getYearsOfExperience } from './utils/experience';
+} from "./data/portfolioData";
+import { getYearsOfExperience } from "./utils/experience";
 
 const navLinks = [
-  { label: '~/about', href: '#about' },
-  { label: '~/skills', href: '#skills' },
-  { label: '~/experience', href: '#experience' },
-  { label: '~/projects', href: '#projects' },
-  { label: '~/certs', href: '#certifications' },
-  { label: '~/contact', href: '#contact' },
+  { label: "~/about", href: "#about" },
+  { label: "~/skills", href: "#skills" },
+  { label: "~/experience", href: "#experience" },
+  { label: "~/projects", href: "#projects" },
+  { label: "~/certs", href: "#certifications" },
+  { label: "~/contact", href: "#contact" },
 ];
 
 function App() {
   const yearsOfExperience = getYearsOfExperience(CAREER_START_DATE);
   const [activeTitleIndex, setActiveTitleIndex] = useState(0);
-  const [typedText, setTypedText] = useState('');
+  const [typedText, setTypedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [revealedSections, setRevealedSections] = useState(() => new Set([0]));
-  const [activeSection, setActiveSection] = useState('about');
+  const [activeSection, setActiveSection] = useState("about");
   const rotatingTitles = useMemo(
     () => profile.rotatingTitles ?? [profile.title],
     []
   );
   const navSectionIds = useMemo(
-    () => navLinks.map((link) => link.href.replace('#', '')),
+    () => navLinks.map((link) => link.href.replace("#", "")),
     []
   );
 
   useEffect(() => {
     const currentTitle = rotatingTitles[activeTitleIndex];
     const isTypingDone = typedText === currentTitle;
-    const isDeletingDone = typedText === '';
+    const isDeletingDone = typedText === "";
 
     let delay = isDeleting ? 36 : 55;
     if (isTypingDone && !isDeleting) delay = 1100;
@@ -66,7 +66,7 @@ function App() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const id = Number(entry.target.getAttribute('data-section-id'));
+            const id = Number(entry.target.getAttribute("data-section-id"));
             setRevealedSections((prev) => new Set(prev).add(id));
           }
         });
@@ -74,7 +74,7 @@ function App() {
       { threshold: 0.18 }
     );
 
-    const sections = document.querySelectorAll('[data-section-id]');
+    const sections = document.querySelectorAll("[data-section-id]");
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
   }, []);
@@ -90,7 +90,7 @@ function App() {
       },
       {
         root: null,
-        rootMargin: '-34% 0px -52% 0px',
+        rootMargin: "-34% 0px -52% 0px",
         threshold: 0.01,
       }
     );
@@ -119,14 +119,16 @@ function App() {
           <a
             key={link.label}
             href={link.href}
-            className={`nav-link ${activeSection === link.href.replace('#', '') ? 'active' : ''}`}
+            className={`nav-link ${
+              activeSection === link.href.replace("#", "") ? "active" : ""
+            }`}
             onClick={(e) => {
               e.preventDefault();
-              const el = document.getElementById(link.href.replace('#', ''));
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
+              const el = document.getElementById(link.href.replace("#", ""));
+              if (el) el.scrollIntoView({ behavior: "smooth" });
             }}
           >
-            <span className="nav-icon">{'>'}</span>
+            <span className="nav-icon">{">"}</span>
             {link.label}
           </a>
         ))}
@@ -139,7 +141,9 @@ function App() {
       <main className="app-shell">
         {/* HERO / ABOUT */}
         <section
-          className={`section hero reveal ${revealedSections.has(0) ? 'is-visible' : ''}`}
+          className={`section hero reveal ${
+            revealedSections.has(0) ? "is-visible" : ""
+          }`}
           data-section-id="0"
           id="about"
         >
@@ -157,9 +161,12 @@ function App() {
               <div className="term-output">
                 <h1 className="glitch-name">{profile.name}</h1>
                 <p className="hero-role">
-                  <span className="keyword">const</span>{' '}
-                  <span className="fn">role</span> ={' '}
-                  <span className="string">"{typedText}<span className="cursor">▮</span>"</span>
+                  <span className="keyword">const</span>{" "}
+                  <span className="fn">role</span> ={" "}
+                  <span className="string">
+                    "{typedText}
+                    <span className="cursor">▮</span>"
+                  </span>
                 </p>
               </div>
               <p className="term-line">
@@ -170,11 +177,19 @@ function App() {
                 <span className="prompt">$</span> echo $STATUS
               </p>
               <p className="term-output meta">
-                <span className="comment">// {yearsOfExperience}+ years building systems</span>
+                <span className="comment">
+                  {"//"} {yearsOfExperience}+ years building systems
+                </span>
               </p>
               <div className="term-links">
                 {profile.links.map((link) => (
-                  <a key={link.label} href={link.href} target="_blank" rel="noreferrer" className="dev-link">
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="dev-link"
+                  >
                     [{link.label}]
                   </a>
                 ))}
@@ -189,7 +204,9 @@ function App() {
 
         {/* SKILLS */}
         <section
-          className={`section reveal ${revealedSections.has(1) ? 'is-visible' : ''}`}
+          className={`section reveal ${
+            revealedSections.has(1) ? "is-visible" : ""
+          }`}
           data-section-id="1"
           id="skills"
         >
@@ -201,14 +218,17 @@ function App() {
               <div
                 key={skillGroup.category}
                 className="skill-block reveal-item"
-                style={{ '--stagger-delay': `${index * 100}ms` }}
+                style={{ "--stagger-delay": `${index * 100}ms` }}
               >
                 <h3 className="skill-category">
-                  <span className="bracket">{'{'}</span> {skillGroup.category} <span className="bracket">{'}'}</span>
+                  <span className="bracket">{"{"}</span> {skillGroup.category}{" "}
+                  <span className="bracket">{"}"}</span>
                 </h3>
                 <div className="skill-tags">
                   {skillGroup.items.map((item) => (
-                    <span key={item} className="skill-tag">{item}</span>
+                    <span key={item} className="skill-tag">
+                      {item}
+                    </span>
                   ))}
                 </div>
               </div>
@@ -218,7 +238,9 @@ function App() {
 
         {/* EXPERIENCE */}
         <section
-          className={`section reveal ${revealedSections.has(2) ? 'is-visible' : ''}`}
+          className={`section reveal ${
+            revealedSections.has(2) ? "is-visible" : ""
+          }`}
           data-section-id="2"
           id="experience"
         >
@@ -230,7 +252,7 @@ function App() {
               <div
                 key={`${exp.company}-${exp.duration}`}
                 className="exp-commit reveal-item"
-                style={{ '--stagger-delay': `${index * 140}ms` }}
+                style={{ "--stagger-delay": `${index * 140}ms` }}
               >
                 <div className="commit-hash">{exp.duration}</div>
                 <div className="commit-body">
@@ -251,7 +273,9 @@ function App() {
 
         {/* PROJECTS */}
         <section
-          className={`section reveal ${revealedSections.has(3) ? 'is-visible' : ''}`}
+          className={`section reveal ${
+            revealedSections.has(3) ? "is-visible" : ""
+          }`}
           data-section-id="3"
           id="projects"
         >
@@ -266,7 +290,7 @@ function App() {
                 target="_blank"
                 rel="noreferrer"
                 className="project-card reveal-item"
-                style={{ '--stagger-delay': `${index * 120}ms` }}
+                style={{ "--stagger-delay": `${index * 120}ms` }}
               >
                 <div className="project-header">
                   <span className="file-icon">📁</span>
@@ -286,7 +310,9 @@ function App() {
 
         {/* CERTIFICATIONS */}
         <section
-          className={`section reveal ${revealedSections.has(4) ? 'is-visible' : ''}`}
+          className={`section reveal ${
+            revealedSections.has(4) ? "is-visible" : ""
+          }`}
           data-section-id="4"
           id="certifications"
         >
@@ -295,21 +321,30 @@ function App() {
           </h2>
           <div className="cert-list">
             <pre className="cert-json">
-              <span className="bracket">{'['}</span>{'\n'}
+              <span className="bracket">{"["}</span>
+              {"\n"}
               {certifications.map((cert, i) => (
-                <span key={cert} className="reveal-item" style={{ '--stagger-delay': `${i * 100}ms` }}>
-                  {'  '}<span className="string">"{cert}"</span>
-                  {i < certifications.length - 1 ? ',' : ''}{'\n'}
+                <span
+                  key={cert}
+                  className="reveal-item"
+                  style={{ "--stagger-delay": `${i * 100}ms` }}
+                >
+                  {"  "}
+                  <span className="string">"{cert}"</span>
+                  {i < certifications.length - 1 ? "," : ""}
+                  {"\n"}
                 </span>
               ))}
-              <span className="bracket">{']'}</span>
+              <span className="bracket">{"]"}</span>
             </pre>
           </div>
         </section>
 
         {/* CONTACT */}
         <section
-          className={`section reveal ${revealedSections.has(5) ? 'is-visible' : ''}`}
+          className={`section reveal ${
+            revealedSections.has(5) ? "is-visible" : ""
+          }`}
           data-section-id="5"
           id="contact"
         >
@@ -319,11 +354,18 @@ function App() {
           <div className="contact-block">
             <div className="contact-cta">
               <p className="term-line">
-                <span className="prompt">$</span> echo "Let's build something together"
+                <span className="prompt">$</span> echo "Let's build something
+                together"
               </p>
               <div className="term-links">
                 {profile.links.map((link) => (
-                  <a key={link.label} href={link.href} target="_blank" rel="noreferrer" className="dev-link">
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="dev-link"
+                  >
                     [{link.label}]
                   </a>
                 ))}
@@ -337,16 +379,34 @@ function App() {
               <div className="form-row">
                 <label className="form-label">
                   <span className="keyword">name</span>:
-                  <input type="text" name="name" required placeholder='"your name"' className="form-input" />
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    placeholder='"your name"'
+                    className="form-input"
+                  />
                 </label>
                 <label className="form-label">
                   <span className="keyword">email</span>:
-                  <input type="email" name="email" required placeholder='"you@example.com"' className="form-input" />
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    placeholder='"you@example.com"'
+                    className="form-input"
+                  />
                 </label>
               </div>
               <label className="form-label">
                 <span className="keyword">message</span>:
-                <textarea name="message" required rows="4" placeholder='"what do you want to build?"' className="form-input form-textarea" />
+                <textarea
+                  name="message"
+                  required
+                  rows="4"
+                  placeholder='"what do you want to build?"'
+                  className="form-input form-textarea"
+                />
               </label>
               <button type="submit" className="form-submit">
                 <span className="prompt">$</span> send --now
@@ -354,7 +414,9 @@ function App() {
             </form>
           </div>
           <p className="footer-sig">
-            <span className="comment">/* crafted with React, Canvas & caffeine */</span>
+            <span className="comment">
+              /* crafted with React, Canvas & caffeine */
+            </span>
           </p>
         </section>
       </main>
