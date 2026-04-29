@@ -415,7 +415,7 @@ function App() {
           </div>
           <p className="footer-sig">
             <span className="comment">
-              /* crafted with React, Canvas & caffeine */
+              {"/* crafted with React, Canvas & caffeine */"}
             </span>
           </p>
         </section>
