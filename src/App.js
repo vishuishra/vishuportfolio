@@ -50,12 +50,6 @@ function App() {
   const [revealedSections, setRevealedSections] = useState(() => new Set([0]));
   const [activeSection, setActiveSection] = useState("about");
   const [formStatus, setFormStatus] = useState("idle"); // idle | sending | success | error
-  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "dark");
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
   const rotatingTitles = useMemo(
     () => profile.rotatingTitles ?? [profile.title],
     []
@@ -138,19 +132,25 @@ function App() {
 
       {/* Terminal-style sidebar nav */}
       <nav className="side-nav">
+        <div className="nav-social">
+          {profile.links.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noreferrer"
+              className="nav-social-link"
+              title={link.label}
+            >
+              <LinkIcon type={link.icon} />
+            </a>
+          ))}
+        </div>
         <div className="nav-header">
           <span className="nav-dot red" />
           <span className="nav-dot yellow" />
           <span className="nav-dot green" />
           <span className="nav-title">explorer</span>
-          <button
-            className="theme-toggle"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            aria-label="Toggle theme"
-            title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-          >
-            {theme === "dark" ? "☀" : "☽"}
-          </button>
         </div>
         {navLinks.map((link) => (
           <a
@@ -188,11 +188,9 @@ function App() {
               <span className="term-tab">vishu@portfolio:~</span>
             </div>
             <div className="terminal-body">
-              <p className="term-line">
-                <span className="prompt">$</span> About Me
-              </p>
               <div className="term-output">
                 <h1 className="glitch-name">{profile.name}</h1>
+                <div className="name-underline" />
                 <p className="hero-role">
                   <span className="string">
                     {typedText}
@@ -200,9 +198,6 @@ function App() {
                   </span>
                 </p>
               </div>
-              <p className="term-line">
-                <span className="prompt">$</span> Introduction
-              </p>
               <div className="term-output bio">
                 {profile.intro.map((paragraph, i) => (
                   <p key={i}>{paragraph}</p>

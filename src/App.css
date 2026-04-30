@@ -2,8 +2,7 @@
    DEVELOPER PORTFOLIO — TERMINAL/IDE AESTHETIC
    ═══════════════════════════════════════════════════ */
 
-:root,
-[data-theme="dark"] {
+:root {
   --bg: #0a0e17;
   --surface: #0f1923;
   --surface-2: #151f2e;
@@ -21,24 +20,6 @@
   --glow: rgba(0, 229, 160, 0.15);
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-[data-theme="light"] {
-  --bg: #f5f7fa;
-  --surface: #ffffff;
-  --surface-2: #eef1f6;
-  --surface-3: #e2e7ef;
-  --text: #2d3748;
-  --text-bright: #1a202c;
-  --muted: #718096;
-  --accent: #059669;
-  --accent-2: #6d28d9;
-  --accent-3: #e11d48;
-  --yellow: #d97706;
-  --orange: #ea580c;
-  --blue: #2563eb;
-  --border: #cbd5e1;
-  --glow: rgba(5, 150, 105, 0.1);
 }
 
 /* ═══ LAYOUT ═══ */
@@ -92,6 +73,33 @@
   min-width: 130px;
 }
 
+.nav-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-social-link {
+  color: var(--muted);
+  transition: color 180ms ease, transform 180ms ease;
+  display: flex;
+  align-items: center;
+}
+
+.nav-social-link:hover {
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.nav-social-link svg {
+  width: 15px;
+  height: 15px;
+}
+
 .nav-header {
   display: flex;
   align-items: center;
@@ -116,24 +124,6 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 0.65rem;
-}
-
-.theme-toggle {
-  margin-left: auto;
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  color: var(--text);
-  font-size: 1rem;
-  cursor: pointer;
-  padding: 0.2rem 0.4rem;
-  line-height: 1;
-  transition: all 180ms ease;
-}
-
-.theme-toggle:hover {
-  border-color: var(--accent);
-  color: var(--accent);
 }
 
 .nav-link {
@@ -318,6 +308,15 @@
   font-family: var(--font-mono);
   letter-spacing: -0.02em;
   text-shadow: 0 0 20px rgba(0, 229, 160, 0.2);
+}
+
+.name-underline {
+  height: 1px;
+  width: 12ch;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  margin-top: 0.4rem;
+  margin-bottom: 0.3rem;
+  background: linear-gradient(to right, var(--accent), transparent);
 }
 
 .hero-role {
