@@ -132,20 +132,6 @@ function App() {
 
       {/* Terminal-style sidebar nav */}
       <nav className="side-nav">
-        <div className="nav-social">
-          {profile.links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noreferrer"
-              className="nav-social-link"
-              title={link.label}
-            >
-              <LinkIcon type={link.icon} />
-            </a>
-          ))}
-        </div>
         <div className="nav-header">
           <span className="nav-dot red" />
           <span className="nav-dot yellow" />
@@ -169,6 +155,20 @@ function App() {
             {link.label}
           </a>
         ))}
+        <div className="nav-social">
+          {profile.links.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noreferrer"
+              className="nav-social-link"
+              title={link.label}
+            >
+              <LinkIcon type={link.icon} />
+            </a>
+          ))}
+        </div>
       </nav>
 
       <main className="app-shell">
