@@ -343,23 +343,19 @@ function App() {
             <span className="heading-symbol">#</span> Certifications
           </h2>
           <div className="cert-list">
-            <pre className="cert-json">
-              <span className="bracket">{"["}</span>
-              {"\n"}
-              {certifications.map((cert, i) => (
-                <span
-                  key={cert}
-                  className="reveal-item"
-                  style={{ "--stagger-delay": `${i * 100}ms` }}
-                >
-                  {"  "}
-                  <span className="string">"{cert}"</span>
-                  {i < certifications.length - 1 ? "," : ""}
-                  {"\n"}
-                </span>
-              ))}
-              <span className="bracket">{"]"}</span>
-            </pre>
+            {certifications.map((cert, i) => (
+              <a
+                key={cert.name}
+                href={cert.href}
+                target="_blank"
+                rel="noreferrer"
+                className="cert-card reveal-item"
+                style={{ "--stagger-delay": `${i * 100}ms` }}
+              >
+                <span className="cert-name">{cert.name}</span>
+                <span className="cert-arrow">↗</span>
+              </a>
+            ))}
           </div>
         </section>
 

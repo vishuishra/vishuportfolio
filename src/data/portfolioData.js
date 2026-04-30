@@ -91,8 +91,8 @@ export const projects = [
 ];
 
 export const certifications = [
-  'AWS Certified Cloud Practitioner',
-  'Microsoft Certified: Azure Fundamentals (AZ-900)',
+  { name: 'AWS Certified Cloud Practitioner', href: 'https://www.credly.com/badges/4b48a695-de8c-45bc-8c26-bb5a821db99e/public_url' },
+  { name: 'Microsoft Certified: Azure Fundamentals (AZ-900)', href: 'https://www.credly.com/badges/7e786db9-6adc-49dd-8a3c-0a2333a68186' },
 ];
 
 export const education = {

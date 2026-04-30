@@ -652,18 +652,63 @@
 
 /* ═══ CERTIFICATIONS ═══ */
 .cert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cert-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 1.5rem;
+  padding: 1rem 1.4rem;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  transition: all 200ms ease;
 }
 
-.cert-json {
+.cert-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.cert-card:hover {
+  border-color: rgba(0, 229, 160, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.cert-card:hover::before {
+  opacity: 1;
+}
+
+.cert-name {
   font-family: var(--font-mono);
-  font-size: 0.9rem;
-  margin: 0;
-  line-height: 2;
-  white-space: pre-wrap;
+  font-size: 0.88rem;
+  color: var(--text-bright);
+}
+
+.cert-arrow {
+  color: var(--muted);
+  font-size: 1rem;
+  transition: color 200ms ease, transform 200ms ease;
+}
+
+.cert-card:hover .cert-arrow {
+  color: var(--accent);
+  transform: translate(2px, -2px);
 }
 
 /* ═══ CONTACT ═══ */
@@ -855,6 +900,10 @@
     display: none;
   }
 
+  .nav-social {
+    display: none;
+  }
+
   .nav-link {
     font-size: 0.68rem;
     padding: 0.3rem 0.5rem;
@@ -889,6 +938,10 @@
 
   .commit-hash {
     min-width: unset;
+  }
+
+  .contact-form {
+    padding-bottom: 4rem;
   }
 }
 
