@@ -8,14 +8,16 @@ export const profile = {
     'Designing AI-powered product workflows',
     'Shipping APIs with production-grade reliability',
   ],
-  intro:
-    'I design resilient backend systems, AI workflows, and scalable APIs that solve real business problems.',
+  intro: [
+    'Software Engineer with 4+ years of experience building scalable, cloud-native applications using Python, Flask, and FastAPI. Skilled in microservices, event-driven architectures, and high-performance distributed systems.',
+    'Experienced in AI-driven systems — LLMs, Agentic AI, RAG pipelines, semantic search, and vector embeddings. Proficient in CI/CD, Docker, Kubernetes, and Azure for deploying production systems at scale.',
+  ],
   location: 'India',
   email: 'mishra.vishu99@gmail.com',
   links: [
-    { label: 'GitHub', href: 'https://github.com/vishuishra' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/vishu-mishra' },
-    { label: 'Email', href: 'mailto:mishra.vishu99@gmail.com' },
+    { label: 'GitHub', href: 'https://github.com/vishuishra', icon: 'github' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/vishu-mishra', icon: 'linkedin' },
+    { label: 'Email', href: 'mailto:mishra.vishu99@gmail.com', icon: 'email' },
   ],
 };
 
